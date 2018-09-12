@@ -1,0 +1,26 @@
+{% extends 'adminapp/base.html' %}
+
+{% block title %}
+{{title}}
+{% endblock %}
+
+{% block content %}
+{% autoescape off %}
+
+<form method="post">
+    {% csrf_token %}
+    {% for field in form%}
+    <div class="category-item">
+    {{ field.label_tag }}
+    {{ field }}
+    {% if field.help_text %}
+        ({{field.help_text}})
+    {% endif %}
+    </div>
+    {% endfor %}
+
+    <button class="button-edit" type="submit">Сохранить</button>
+</form>
+
+{% endautoescape %}
+{% endblock %}

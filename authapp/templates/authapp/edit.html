@@ -1,0 +1,16 @@
+{% extends "mainapp/base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<form class="auth" action="{% url 'auth:edit' %}" method="post"  enctype="multipart/form-data">
+    {% csrf_token %}
+    <img class="avatar" src="/media/{{user.avatar}}" alt="avatar">
+    <label class="label_avatar" for="id_avatar">Choose a file</label>
+    <input name="avatar" id="id_avatar" type="file" accept="image/*"/>
+    {{ edit_form.as_p }}
+    <button type="submit">Save</button>
+    <button type="reset">Reset</button>
+</form>
+
+{% endblock %}

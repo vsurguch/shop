@@ -1,0 +1,17 @@
+ {% if items %}
+       {% for item in items %}
+
+       <div class="catalog_item">
+
+       <a href="{% url 'item_view' item.id %} ">
+       <div class="catalog_img">
+       <img src="/media/{{item.img}}" alt="{{item.name}} ({{item.author}})">
+              </div>
+       <div class="description">{{item.name}}</div>
+       </a>
+       </div>
+
+       {% endfor %}
+        {% else %}
+<h4>Товаров не найдено</h4>
+{% endif %}

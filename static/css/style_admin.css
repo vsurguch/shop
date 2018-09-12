@@ -1,0 +1,155 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.header {
+    height: 30px;
+    background-color: dimgray;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header h4{
+    font-family: sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 30px;
+}
+
+.header .menu{
+    height: 30px;
+    line-height: 30px;
+}
+
+.header .menu-item{
+    display: inline;
+    font-family: sans-serif;
+    font-size: 14px;
+    padding: 0 20px 0 20px;
+}
+
+.header .menu-item a{
+    text-decoration: none;
+    color: white;
+}
+
+.buttons_box {
+    margin: 0 auto;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.big_button {
+    margin: 30px 0px 30px 0px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    background-color: white;
+    color: gray;
+    font-size: 20px;
+    width: 250px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.big_button:hover{
+    color: black;
+    background-color: lightgray;
+}
+
+.category-item {
+    border-bottom: 1px dashed gray;
+}
+
+.name {
+    display: block;
+    float: left;
+    height: 30px;
+    width: 300px;
+    line-height: 30px;
+    margin: 20px;
+    text-transform: capitalize;
+    font-size: 14px;
+    font-family: sans-serif;
+    overflow: hidden;
+}
+
+.button-add {
+    width: 200px;
+    height: 40px;
+    margin: 20px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    background-color: white;
+    color: darkgray;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.button-edit {
+    width: 120px;
+    height: 30px;
+    margin: 20px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    background-color: white;
+    color: darkgray;
+    cursor: pointer;
+}
+
+.button-add:hover, .button-edit:hover {
+    border-width: 2px;
+    color: black;
+}
+
+form {
+    display: inline;
+}
+
+.edit-input {
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 400px;
+    height: 30px;
+    margin: 20px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    background-color: white;
+    color: darkgray;
+}
+
+.edit-text {
+    padding: 10px;
+    width: 400px;
+    height: 100px;
+    margin: 20px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    background-color: white;
+    color: darkgray;
+}
+
+label {
+    height: 30px;
+    width: 200px;
+    line-height: 30px;
+    margin: 20px;
+    text-transform: capitalize;
+    font-size: 14px;
+    font-family: sans-serif;
+    overflow: hidden;
+}
+
+
+
+
+.

@@ -1,0 +1,14 @@
+<ul class="menu">
+    <li class="active"><a href="/">главная</a></li>
+    <li class="active"><a href="/catalog">каталог</a></li>
+    <li class="active"><a href="/contacts">контакты</a></li>
+    {% if user.is_authenticated %}
+    <li class="active" id="basket_menu">{% include 'mainapp/basket_menu.html' %}</li>
+    <li class="active"><a href="{% url 'auth:edit' %}">редактировать</a></li>
+    <li class="active"><a href="{% url 'auth:logout' %}">logout</a></li>
+    {% else %}
+    <li>корзина</li>
+    <li>редактировать</li>
+    <li class="active"><a href="{% url 'auth:login' %}">login</a></li>
+    {% endif %}
+</ul>

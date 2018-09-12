@@ -1,0 +1,15 @@
+{% extends 'adminapp/base.html' %}
+
+{% block title %}
+Admin
+{% endblock %}
+
+{% block content %}
+
+    <div class="buttons_box">
+        <a href="{% url 'admin:categories' %}"><button class="big_button">Категории</button></a>
+        <a href="{% url 'admin:authors' %}"><button class="big_button">Авторы</button></a>
+        <a href="{% url 'admin:items' %}"><button class="big_button">Товары</button></a>
+    </div>
+
+{% endblock %}

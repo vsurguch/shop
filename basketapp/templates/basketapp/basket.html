@@ -1,0 +1,22 @@
+{% extends "basketapp/base.html" %}
+
+{% block content %}
+
+
+<div class="basket">
+
+    <h4>Пользователь: {% if user.is_authenticated %}
+    {{user.username}}
+    {% else %} незарегистрированный пользователь
+    {% endif %}
+    </h4>
+
+    {% if all_ordered %}
+    Сейчас в вашей корзине:
+    {% include "basketapp/inc_basket_list.html" %}
+    {% else %}
+    У вас нет товаров в корзине
+    {% endif %}
+
+</div>
+{% endblock %}

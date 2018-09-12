@@ -1,0 +1,23 @@
+{% extends "mainapp/base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="auth">
+    <form action="{% url 'auth:login' %}" method="post">
+        {% csrf_token %}
+        {% if next %}
+        <input type="hidden" name="next" value="{{next}}">
+        {% endif %}
+        {{ login_form }}
+        <button type="submit">Login</button>
+        <button type="reset">Reset</button>
+        <br>
+        <label for="register_button">Если вы не еще регистрировались:</label>
+        <a href="{% url 'auth:register' %}"><button id="register_button" type="button">Register</button></a>
+
+    </form>
+
+</div>
+
+
+{% endblock %}

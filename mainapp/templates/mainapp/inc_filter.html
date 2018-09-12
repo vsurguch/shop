@@ -1,0 +1,21 @@
+<div class="filter">
+    {% autoescape off %}
+    <form action="{% url 'catalog' %}">
+    <label for="select_author">Выбрать автора</label>
+    <select name="authors" id="select_author">
+        <option value="0">Все</option>
+        {% for author in authors %}
+        <option value="{{author.id}}">{{author.name}}</option>
+        {% endfor %}
+    </select>
+    <label for="select_category">Выбрать категорию</label>
+    <select name="categories" id="select_category">
+        <option value="0">Все</option>
+        {% for category in categories %}
+        <option value="{{category.id}}">{{category.name}}</option>
+        {% endfor %}
+    </select>
+    <button type="button" onclick="loadDoc(this.form.authors.value, this.form.categories.value)">Применить</button>
+    </form>
+    {% endautoescape %}
+</div>

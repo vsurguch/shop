@@ -1,0 +1,25 @@
+{% extends 'adminapp/base.html' %}
+
+{% block title %}
+{{title}}
+{% endblock %}
+
+{% block content %}
+{% autoescape off %}
+
+<a href="{% url link_create %}"><button class="button-add">Добавить {{to_add}} </button></a>
+{% for object in objects_list %}
+<div class="category-item">
+    <span class="name">{{object}}</span>
+    <a href="{% url link_edit object.id %}"><button class="button-edit" type="button">Редактировать</button></a>
+    <form action="{% url link_delete %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="id" value="{{object.id}}">
+        <button class="button-edit" type="submit">Удалить</button>
+    </form>
+</div>
+{% endfor %}
+
+
+{% endautoescape %}
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends "mainapp/base.html" %}
+
+{% block content %}
+{% autoescape off %}
+ <h2>{{item.author}}. {{item.name}}</h2>
+       <a href="/media/{{item.img}}" target="_blank"><div class="item_img"><img src="/media/{{item.img}}"
+    alt="{{item.name}}"></div>
+</a>
+    <div class="short">
+        <h3>Описание товара</h3>
+<p>{{item.short_desc}}</p>
+        <a href=
+                {% if user.is_authenticated %}
+                   "{% url 'basket:basket_add' item.id %}"
+                {% else %}
+                    "{% url 'auth:login' %}"
+                {% endif %}
+        >
+        <button class="buy" name="{{item.id}}">Купить</button></a>
+      </div>
+
+<div class="characteristics">
+    <h3>Характеристики товара</h3>
+
+<table class="characteristics-table">
+    <tr>
+        <td>Категория</td>
+        <td>{{item.category}}</td>
+    </tr>
+    <tr>
+        <td>Годы создания:</td>
+        <td>{{item.years}}.</td>
+    </tr>
+    <tr>
+        <td>Носитель, техника:</td>
+        <td>{{item.tech}}о</td>
+    </tr>
+    <tr>
+        <td>Размер:</td>
+        <td>{{item.width}}&times;{{item.height}}</td>
+    </tr>
+</table>
+
+</div>
+
+<div class="detailed">
+    <h3>Подробное описание товара</h3>
+<p> {% if item.detailed_desc %}
+    {{item.detailed_desc}}
+    {% else %}
+    Описание отсутствует.
+    {% endif %}
+</p>
+</div>
+{% endautoescape %}
+{% endblock %}

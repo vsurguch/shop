@@ -1,0 +1,10 @@
+{% load staticfiles %}
+
+<div class="header">
+<a class="title" href="{% url 'main:index' %}">
+    <!--<img class="logo" src="{% static 'img/logo.jpg' %}" alt="Masterpiece Интернет-магазин">-->
+    <h2>Masterpiece</h2>
+</a>
+
+    {% include "mainapp/menu_.html" %}
+</div>

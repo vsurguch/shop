@@ -1,0 +1,447 @@
+html, body {
+    background-color: #f8f8f8;
+    background-color: aliceblue;
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    min-height: 100%;
+    background-color: white;
+}
+
+.header {
+    /* background-color: darkcyan; */
+    background-image: url("../img/logo.jpg");
+    background-size: cover;
+    height: 220px;
+}
+
+.header .title {
+    background-color: rgba(0, 139, 139, 0.5);
+    height: 120px;
+    padding: 30px;
+    text-decoration: none;
+    display: flex;
+}
+.header .logo{
+    width: 150px;
+    height: 120px;
+}
+.title h2 {
+    color: white;
+    font-size: 60px;
+    font-weight: 600; 
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    margin: 0px auto;
+    padding: 0px;
+    line-height: 120px;
+}
+
+.menu {
+    background-color: rgba(0, 139, 139, 0.9);
+    height: 40px;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+    line-height: 40px;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid white;
+}
+
+.menu li {
+    padding: 0;
+    margin: 0;
+    width: 200px;
+    text-align: center;
+    color: lightgray;
+    font-size: 20px;
+    font-variant: small-caps;
+}
+
+.menu li:before {
+    content: "> ";
+    color: transparent;
+}
+
+.menu li:after {
+    content: " <";
+    color: transparent;
+}
+
+.menu .active:hover:before{
+    content: "> ";
+    color: white;
+}
+
+.menu .active:hover:after{
+    content: " <";
+    color: white;
+}
+.menu li .active:hover {
+    cursor: pointer;
+}
+
+.menu li a {
+    color: white;
+    text-decoration: none;
+}
+
+#basket_menu {
+    position: relative;
+}
+
+#basket_menu_count {
+    position: absolute;
+    top: 0px;
+    right: 20px;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: red;
+    opacity: 0.7;
+    font-size: 16px;
+    line-height: 25px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0px;
+    background-color: dimgrey;
+    height: 60px;
+    width: 100%;
+}
+
+.footer p {
+    font-size: 16px;
+    text-align: right;
+    color: white;
+    margin: 10px 30px;
+    line-height: 40px;
+/*
+    line-height: 30px;
+    margin: 0;
+    padding: 10px 30px;
+*/
+}
+
+
+.content {
+    padding: 30px 30px 60px 30px;
+}
+
+.homepage .content p {
+    font-size: 16px;
+    line-height: 24px;
+    color: gray;
+}
+
+.title h2::first-letter, .homepage .content h2::first-letter{
+    color: red;
+    font-weight: bold;
+    font-family: serif;
+    font-size: 66px;
+}
+
+.catalog h3, .contacts h3, .item h3{
+    color: black;
+    font-size: 20px;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+    padding: 30px 0px 5px;
+/*
+    margin: 30px 0px 30px 0px;
+    padding-bottom: 10px;
+*/
+    border-bottom: 1px solid gray;
+}
+
+/* item */
+
+.item .short h3 {
+    display: none;
+}
+
+.item .short {
+    padding: 0px 30px;
+    overflow: hidden;
+    color: #707070;
+    font-size: 1em;
+    line-height: 18px;
+}
+
+.item .characteristics {
+    clear: both;
+}
+
+
+.item .detailed {
+    color: #484343;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: justify;
+}
+
+.item .characteristics-list {
+    list-style: square;
+    color: dimgray;
+    line-height: 24px;
+}
+
+.item .characteristics-table {
+    margin: 30px 0px;
+    border-collapse: collapse; 
+}
+
+.item .characteristics-table tr:nth-child(2n+1) {
+    background-color: lightgray;
+}
+
+.item .characteristics-table td  {
+    color: #707070;
+    width: 250px;
+    height: 30px;
+}
+
+.item .content .item_img {
+    width: 200px;
+    height: 250px;
+    overflow: hidden;
+    float: left;
+}
+
+.item .content img {
+    width: 200px;
+}
+
+.quote {
+    display: block;
+    color: gray;
+    font-style: italic;
+    font-size: 0.9em;
+    margin: 10px 0px;
+    text-indent: 20px;
+}
+
+.buy {
+    width: 150px;
+    height: 60px;
+    border-radius: 5px;
+    background-color: dimgray;
+    color: white;
+    font-size: 24px;
+    border-style: solid;
+    margin: 30px 0px;
+}
+
+.buy:hover {
+    background-color: darkcyan;
+    cursor: pointer;
+}
+
+/* catalog */
+
+.items_list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    
+}
+
+.catalog_item {
+    width: 150px;
+    border: 1px solid lightgray;
+    padding: 10px;
+    margin: 10px;
+}
+
+.catalog_item .catalog_img {
+    width: 150px;
+    height: 180px;
+    overflow: hidden;
+    margin: 0px 0px 10px 0px;
+}
+
+.catalog_item img {
+    width: 150px;
+}
+
+.catalog_item .description {
+    margin: 0px;
+    padding-top: 10px;
+    border-top: 1px dotted gray;
+    text-align: center;
+}
+
+.catalog .catalog_item a{
+    text-decoration: none;
+    color: black;
+    line-height: 22px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.catalog  .catalog_item a:hover{
+    color: blueviolet;
+}
+/* auth */
+.authform input[type="text"], .authform input[type="email"], .authform input[type="password"], .authform input[type="number"],
+ input[type="file"] {
+    width: 300px;
+    height: 40px;
+    margin: 0px 20px 20px 0px;
+    border-color: dimgray;
+    border-style: solid;
+    border-radius: 5px;
+    font-size: 18px;
+    padding: 5px 20px;
+}
+
+.authform input[type="text"]:hover, .authform input[type="password"]:hover, .authform input[type="number"]:hover,
+.authform input[type="email"]:hover, .authform input[type="file"]:hover, .authform input[type="text"]:focus,
+.authform input[type="email"]:focus, .authform input[type="password"]:focus, .authform input[type="number"],
+input[type="file"]:focus {
+    border-color: darkcyan;
+    color: darkcyan;
+}
+
+.authform button {
+    margin: 0 30px 30px 0;
+    width: 120px;
+    height: 40px;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: dimgray;
+    border-style: solid;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.authform button:hover {
+    background-color: darkcyan;
+}
+
+.authform .errorlist {
+    display: block;
+    list-style-type: none;
+    font-size: 10px;
+}
+
+.authform label {
+    width: 100%;
+    font-weight: 700;
+    font-size: 16px;
+    display: block;
+    margin-bottom: 20px;
+    color: gray;
+}
+
+.authform .avatar {
+    width: 200px;
+}
+
+#id_avatar {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+}
+
+/* contacts */
+
+.contacts input[type="text"], .contacts input[type="email"], .contacts textarea {
+    width: 300px;
+    margin: 0px 20px 20px 0px;
+    border-color: dimgray;
+    border-style: solid;
+    border-radius: 5px;
+    font-size: 18px;
+    padding: 5px 20px;
+}
+
+.contacts input[type="text"], .contacts textarea {
+    text-transform: capitalize;
+}
+
+.contacts input[type="text"], .contacts input[type="email"]{
+    height: 40px;
+}
+
+.contacts textarea {
+    height: 200px;
+}
+
+.contacts input[type="text"]:hover, .contacts input[type="email"]:hover, .contacts textarea:hover,
+.contacts input[type="text"]:focus, .contacts input[type="email"]:focus, .contacts textarea:focus {
+    border-color: darkcyan;
+    color: darkcyan;
+}
+
+.contacts button {
+    margin-left: 20px;
+    width: 120px;
+    height: 40px;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: dimgray;
+    border-style: solid;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.contacts button:hover {
+    background-color: darkcyan;
+}
+
+.map {
+    margin 20px;
+    width: 100%;
+    height: 414px;
+}
+
+/*.basket_list tr:nth-child(even){
+    background-color: #dddddd;
+}*/
+
+.basket_list td {
+    padding: 5px 50px 5px 5px;
+    font-size: 18px;
+}
+
+.basketimg {
+    width: 70px;
+}
+
+.basket input[type="number"] {
+    width: 40px;
+    height: 14px;
+    padding: 14px;
+    font-size: 18px;
+    border: 1px solid gray;
+}
+
+.basket button{
+    border-radius: 5px;
+    border: none;
+    width: 100px;
+    height: 40px;
+    font-size: 16px;
+    background-color: lightgray;
+    pointer: cursor;
+}
+
+.basket button:hover{
+    background-color: darkcyan;
+    color: white;
+}

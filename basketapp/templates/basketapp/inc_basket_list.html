@@ -1,0 +1,17 @@
+
+
+<table class="basket_list">
+        <tr>
+        <th>Товар</th>
+        <th>Название</th>
+        <th>Количество</th>
+        <th></th></tr>
+        {%for item in all_ordered %}
+        <tr>
+            <td><img class="basketimg" src="/media/{{ item.item.img }}" alt=""></td>
+            <td>{{item.item.name}}</td>
+            <td><input type="number" name="{{ item.id }}" min="0" value="{{ item.quantity }}"></td>
+            <td><button type="button" name="{{ item.id }}">Удалить</button></td>
+        </tr>
+        {% endfor %}
+    </table>

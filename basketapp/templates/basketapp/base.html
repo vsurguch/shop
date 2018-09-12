@@ -1,0 +1,25 @@
+
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+    {% block js %}
+        <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+        <script src="{% static 'js/basket_scripts.js' %}"></script>
+    {% endblock %}
+    <title>{{ title|title }}</title>
+</head>
+<body class="{{body_class}}">
+    <div class="container">
+    {% include "mainapp/header_.html" %}
+   <div class="content">
+       {% block content %}
+       {% endblock %}
+   </div>
+   {% include "mainapp/footer_.html" %}
+   </div>
+
+</body>
+</html>
