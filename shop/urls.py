@@ -22,17 +22,17 @@ from django.conf.urls.static import static
 import mainapp.views as mainappv
 
 urlpatterns = [
-    url(r'^$', include('mainapp.urls', namespace='main')),
+    url(r'^', include('mainapp.urls', namespace='main')),
     path('catalog/', mainappv.catalog, name='catalog'),
     path('catalog_update/', mainappv.catalog_update, name='catalog_update'),
     path('contacts/', mainappv.contacts, name='contacts'),
     path('item/<int:id>', mainappv.item_view, name="item_view"),
-    path('admin/', include('adminapp.urls', namespace='admin')),
+    # path('admin/', include('adminapp.urls', namespace='admin')),
     path('auth/', include('authapp.urls', namespace='auth')),
     path('basket/', include('basketapp.urls', namespace='basket')),
     # url('^$', mainappv.index, name='main'),
     # path('', mainappv.index),
-    # path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls),
     # url(r'^auth/', include('authapp.urls', namespace='auth')),
 ]
 

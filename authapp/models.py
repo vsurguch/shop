@@ -3,6 +3,8 @@ from django.contrib.auth.models import AbstractUser
 from basketapp.models import OrderedItem
 from django.utils.timezone import now
 from datetime import timedelta
+from django.dispatch import receiver
+from django.db.models.signals import post_save
 
 # Create your models here.
 
@@ -27,6 +29,23 @@ class MyUser(AbstractUser):
             return False
         else:
             return True
+
+
+class MyUserProfile(models.Model):
+    user = models.OneToOneField(MyUser, unique=True, null=False, db_index=True, on_delete=models.CASCADE)
+    city = models.CharField(max_length=32, blank=True, default='')
+    photo_link = models.CharField(max_length=256, blank=True)
+
+    @receiver(post_save, sender=MyUser)
+    def create_user_profile(sender, instance, created, **kwargs):
+        if created:
+            MyUserProfile.objects.create(user=instance)
+
+
+    @receiver(post_save, sender=MyUser)
+    def save_user_profile(sender, instance, **kwargs):
+        instance.myuserprofile.save()
+
 
 
 

@@ -3,6 +3,9 @@
 
 {% block content %}
 <div class="auth">
+    {% if msg %}
+        <h5>{{msg}}</h5>
+    {% endif %}
     <form action="{% url 'auth:login' %}" method="post">
         {% csrf_token %}
         {% if next %}
@@ -14,8 +17,10 @@
         <br>
         <label for="register_button">Если вы не еще регистрировались:</label>
         <a href="{% url 'auth:register' %}"><button id="register_button" type="button">Register</button></a>
-
+        <label for="vk_button">Вы также можете войти через свой профиль ВКонтакте</label>
+        <a href="{{vk_link}}"><button type="button" id="vk_button">Войти через ВКонтакте</button></a>
     </form>
+
 
 </div>
 

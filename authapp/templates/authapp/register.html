@@ -5,7 +5,21 @@
 <div class="auth">
   <form action="{% url 'auth:register' %}" method="post"  enctype="multipart/form-data">
     {% csrf_token %}
-    {{ register_form }}
+
+    {% for field in register_form%}
+    <p>
+      {% if field.name == 'avatar' %}
+          <label for="id_{{field.name}}" class="avatar-label">Загрузить фото
+            {{field}}
+      </label>
+      {% else %}
+      <label for="id_{{field.name}}">{{field.label}}</label>
+      {{field}}
+      {% endif %}
+
+    </p>
+    {% endfor %}
+    <!--{{ register_form }}-->
     <br>
     <button type="submit">Register</button>
     <button type="reset">Reset</button>

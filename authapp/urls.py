@@ -10,5 +10,6 @@ urlpatterns = [
     url(r'^logout/$', authappv.logout, name='logout'),
     url(r'^register/$', authappv.register, name='register'),
     url(r'^edit/$', authappv.edit, name='edit'),
-    path('verify/<str:email>/<str:key>/', authappv.verify, name='verify')
+    path('verify/<str:email>/<str:key>/', authappv.verify, name='verify'),
+    path('login-vk/', authappv.login_vk, name='facebook')
 ]

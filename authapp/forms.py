@@ -1,7 +1,7 @@
 
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UserChangeForm
-from authapp.models import MyUser
+from authapp.models import MyUser, MyUserProfile
 import random, hashlib
 
 class UserLoginForm(AuthenticationForm):
@@ -38,13 +38,15 @@ class UserRegisterForm(UserCreationForm):
 
         return user
 
-
+    # def __init__(self, *args, **kwargs):
+    #     super(UserCreationForm, self).__init__(*args, **kwargs)
+    #     self.fields['avatar'].widget.attrs['class'] = 'label_avatar'
 
 
 class UserEditForm(UserChangeForm):
     class Meta:
         model = MyUser
-        fields = {'first_name', 'username', 'password', 'email', 'age'}
+        fields = {'first_name', 'username', 'password', 'email', 'age', 'avatar'}
 
     def __init__(self, *args, **kwargs):
         super(UserEditForm, self).__init__(*args, **kwargs)
@@ -52,5 +54,12 @@ class UserEditForm(UserChangeForm):
             field.help_text = ''
             if field_name == 'password':
                 field.widget = forms.HiddenInput()
+
+class UserProfileEditForm(forms.ModelForm):
+    class Meta:
+        model = MyUserProfile
+        fields = {'city'}
+
+
 
 
