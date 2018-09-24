@@ -1,0 +1,27 @@
+
+{% extends 'orderapp/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="content">
+
+    <div class="order_list_item">
+        <div class="name">Удалить {{object}} ({{object.get_total_cost}}p.) ?</div>
+    <div class="actions">
+        <form class="delete_order" action="{% url 'orderapp:order_delete' object.pk %}" method="post">
+            {% csrf_token %}
+            <button type="submit" value="удалить">Удалить</button>
+        </form>
+        <form class="delete_order" action="{% url 'orderapp:back_to_basket' object.pk %}" method="post">
+            {% csrf_token %}
+            <button type="submit" value="удалить">В корзину</button>
+        </form>
+        <a href="{% url 'orderapp:order_list' %}"><button type="button">Отмена</button></a>
+    </div>
+    </div>
+
+
+
+</div>
+{% endblock %}
+

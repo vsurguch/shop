@@ -1,0 +1,165 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.container {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.header {
+    width: 100%;
+    height: 100px;
+    background-color: gray;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header .logo {
+    font-size: 40px;
+    text-transform: uppercase;
+    font-weight: 700;
+    line-height: 40px;
+    padding: 30px;
+}
+
+.header_menu {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+    font-size: 20px;
+    padding: 30px;
+}
+
+.header_menu_item {
+    display: inline-block;
+    padding: 10px 20px;
+    font-variant: small-caps;
+}
+
+.header_menu_item a {
+    text-decoration: none;
+    color: white;
+}
+
+.content {
+    padding: 20px;
+}
+
+.order_list_item {
+    padding: 10px 20px;
+    margin: 20px 0;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    border: 1px dashed gray;
+    color: black;
+}
+
+.order_list_item .name, .order_list_item .cost {
+    height: 40px;
+    line-height: 40px;
+}
+
+.actions {
+    padding: 5px;
+}
+
+button {
+    width: 120px;
+    height: 30px;
+    padding: 5px;
+    line-height: 20px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    background-color: gray;
+    color: white;
+    cursor: pointer;
+}
+
+.delete_order {
+    display: inline-block;
+}
+
+
+.spacer {
+    width: 300px;
+}
+
+.orders_table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.orders_table tr{
+    height: 60px;
+}
+
+.orders_table td{
+    padding: 10px 20px;
+    border-top: 1px dashed gray;
+    border-bottom: 1px dashed gray;
+}
+
+.orders_table th {
+    padding: 10px 20px;
+}
+
+.orders_table th:first-child {
+    text-align: left;
+}
+
+.orders_table td:first-child {
+    text-align: left;
+    border-left: 1px dashed gray;
+}
+
+.orders_table td:last-child {
+    border-right: 1px dashed gray;
+}
+
+.orders_table .empty_row {
+    height: 20px;
+}
+
+.orders_table .empty_row td {
+    border: none;
+}
+
+.orders_table select {
+    height: 30px;
+    width: 300px;
+    padding: 5px;
+    border: 1px solid gray;
+    box-sizing:border-box;
+}
+
+.orders_table input[type="number"] {
+    height: 30px;
+    width: 40px;
+    padding: 5px;
+    border: 1px solid gray;
+    box-sizing:border-box;
+}
+
+.orders_table input[type="checkbox"] {
+    height: 20px;
+    width: 20px;
+    border: 1px solid gray;
+}
+
+.captions {
+    padding: 0 20px;
+    margin-top: 40px;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    color: dimgray;
+}
+

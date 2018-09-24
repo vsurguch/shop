@@ -12,10 +12,11 @@
     </h4>
 
     {% if all_ordered %}
-    Сейчас в вашей корзине:
+    <span class="caption">Сейчас в вашей корзине:</span>
     {% include "basketapp/inc_basket_list.html" %}
+    <button class="make_order"><a href="{% url 'orderapp:order_create' %}">сделать заказ</a></button>
     {% else %}
-    У вас нет товаров в корзине
+    <span class="caption2">У вас нет товаров в корзине</span>
     {% endif %}
 
 </div>

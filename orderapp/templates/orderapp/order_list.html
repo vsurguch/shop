@@ -1,0 +1,37 @@
+
+{% extends 'orderapp/base.html' %}
+{% load staticfiles %}
+{% load order_tags %}
+
+{% block content %}
+
+<div class="content">
+
+    <div class="captions">
+        {% if object_list.count == 1  %}
+            У Вас имеется 1 заказ.
+        {% elif object_list.count|get_digit:"1" > 1 and object_list.count|get_digit:"1" < 5 %}
+            У Вас имеется {{object_list.count}} заказа.
+        {% elif object_list.count|get_digit:"1" >= 5 %}
+            У Вас имеется {{object_list.count}} заказа.
+        {% else %}
+             У Вас пока нет заказов.
+        {% endif %}
+    </div>
+
+    {% for item in object_list %}
+        <div class="order_list_item">
+            <div class="name">{{item}} ({{item.get_total_cost}}p.)</div>
+            <div class="name">Создан: {{item.created|date:"d/m/Y _H:i"}}</div>
+            <div class="name">{{item.get_status_display}}</div>
+        <div class="actions">
+            <a href="{% url 'orders:order_detail' item.pk %}"><button type="button">просмотреть</button></a>
+            <a href="{% url 'orders:order_update' item.pk %}"><button type="button">редактировать</button></a>
+            <a href="{% url 'orders:order_delete' item.pk %}"><button type="button">удалить</button></a>
+        </div>
+        </div>
+    {% endfor %}
+
+</div>
+
+{% endblock %}

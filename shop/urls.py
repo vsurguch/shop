@@ -30,6 +30,7 @@ urlpatterns = [
     # path('admin/', include('adminapp.urls', namespace='admin')),
     path('auth/', include('authapp.urls', namespace='auth')),
     path('basket/', include('basketapp.urls', namespace='basket')),
+    path('order/', include('orderapp.urls', namespace='orders')),
     # url('^$', mainappv.index, name='main'),
     # path('', mainappv.index),
     path('admin/', admin.site.urls),

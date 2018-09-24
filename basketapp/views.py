@@ -89,8 +89,10 @@ def basket_remove(request, id):
         context = {
             'all_ordered': all_ordered
         }
-
-        result = render_to_string('basketapp/inc_basket_list.html', context)
+        if len(all_ordered) > 0:
+            result = render_to_string('basketapp/inc_basket_list.html', context)
+        else:
+            result = 'Empty'
 
         return JsonResponse({'result': result})
 

@@ -32,7 +32,15 @@ window.onload = function() {
             $.ajax({url: "/basket/remove/" + target_href.name + "/",
                 success: function(data){
                     updateBasketCount();
-                    $('.basket_list').html(data.result);
+                    if (data.result=='Empty'){
+                        $('.caption').text("Empty");
+//                        $('.make_order').attribute("style={display: none;}");
+//                        $('.basket_list').attribute("style={display: none;}");
+                    }
+                    else {
+                        $('.basket_list').html(data.result);
+                    }
+
 
                 },
             });

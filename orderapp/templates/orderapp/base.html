@@ -1,0 +1,31 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% if title %} {{title|title}}
+    {% else %}
+    <title>Masterpiece</title>
+    {% endif %}
+    <link rel="stylesheet" href="{% static 'css/styles_orders.css' %}">
+</head>
+<body>
+<div class="container">
+<div class="header">
+    <div class="logo">
+    <h4>Masterpiece</h4>
+    </div>
+    <ul class="header_menu">
+        <li class="header_menu_item"><a href="{% url 'main:index' %}">Основной сайт</a></li>
+        <li class="header_menu_item"><a href="{% url 'orders:order_list' %}">Мои заказы</a></li>
+    </ul>
+</div>
+
+{% block content %}
+
+{% endblock %}
+</div>
+
+</body>
+</html>

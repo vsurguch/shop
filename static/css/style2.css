@@ -66,6 +66,10 @@ html, body {
     font-variant: small-caps;
 }
 
+.menu .active {
+    color: white;
+}
+
 .menu li:before {
     content: "> ";
     color: transparent;
@@ -106,9 +110,33 @@ html, body {
     height: 25px;
     border-radius: 50%;
     background-color: red;
-    opacity: 0.7;
     font-size: 16px;
     line-height: 25px;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    top: 40px;
+    right: 0px;
+    background-color: red;
+    position: absolute;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a{
+    display: block;
+    padding: 10px 16px;
+    text-decoration: none;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
 }
 
 .footer {
@@ -294,11 +322,25 @@ html, body {
     color: blueviolet;
 }
 /* auth */
-.authform input[type="text"], .authform input[type="email"], .authform input[type="password"], .authform input[type="number"],
- input[type="file"] {
+.auth {
+    margin: 0 auto;
+    width: 370px;
+    text-align: center;
+}
+
+.auth a{
+    text-decoration: none;
+}
+
+.auth h5 {
+    padding: 10px;
+}
+
+.auth input[type="text"], .auth input[type="email"], .auth input[type="password"], .auth input[type="number"],
+.auth input[type="file"] {
     width: 300px;
     height: 40px;
-    margin: 0px 20px 20px 0px;
+    margin: 0 0 20px 0;
     border-color: dimgray;
     border-style: solid;
     border-radius: 5px;
@@ -306,44 +348,62 @@ html, body {
     padding: 5px 20px;
 }
 
-.authform input[type="text"]:hover, .authform input[type="password"]:hover, .authform input[type="number"]:hover,
-.authform input[type="email"]:hover, .authform input[type="file"]:hover, .authform input[type="text"]:focus,
-.authform input[type="email"]:focus, .authform input[type="password"]:focus, .authform input[type="number"],
+.auth input[type="text"]:hover, .auth input[type="password"]:hover, .auth input[type="number"]:hover,
+.auth input[type="email"]:hover, .auth input[type="file"]:hover, .auth input[type="text"]:focus,
+.auth input[type="email"]:focus, .auth input[type="password"]:focus, .auth input[type="number"],
 input[type="file"]:focus {
     border-color: darkcyan;
     color: darkcyan;
 }
 
-.authform button {
-    margin: 0 30px 30px 0;
+.auth button {
+    margin: 0 15px 30px 15px;
     width: 120px;
     height: 40px;
     color: white;
     font-size: 16px;
     font-weight: 500;
-    background-color: dimgray;
-    border-style: solid;
+    background-color: lightgray;
+    border-style: none;
     border-radius: 10px;
     cursor: pointer;
 }
 
-.authform button:hover {
+/*.authform button:hover {
     background-color: darkcyan;
-}
+}*/
 
-.authform .errorlist {
+.auth .errorlist {
     display: block;
     list-style-type: none;
     font-size: 10px;
 }
 
-.authform label {
-    width: 100%;
+.auth .helptext {
+    display: none;
+}
+
+.auth label {
+    width: 300px;
     font-weight: 700;
     font-size: 16px;
     display: block;
+    margin: 0 auto;
     margin-bottom: 20px;
     color: gray;
+}
+
+.auth .avatar-label{
+    line-height: 40px;
+    width: 200px;
+    height: 40px;
+    color: black;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: lightgray;
+    border-style: none;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
 .authform .avatar {
@@ -351,10 +411,31 @@ input[type="file"]:focus {
 }
 
 #id_avatar {
-    width: 0.1px;
+    display: none;
+    /*width: 0.1px;
     height: 0.1px;
-    opacity: 0;
-    overflow: hidden;
+    background-color: white;
+    font-size: 14px;
+    font-weight: 300;
+    opacity: 0;*/
+}
+
+#register_button, #vk_button, #avatar_button{
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    width: 300px;
+}
+
+.auth .default_avatar {
+    margin: 0 auto;
+    line-height: 100px;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    background-color: black;
+    color: white;
+    transform: rotate(45deg);
 }
 
 /* contacts */

@@ -4,11 +4,19 @@
     <li class="active"><a href="/contacts">контакты</a></li>
     {% if user.is_authenticated %}
     <li class="active" id="basket_menu">{% include 'mainapp/basket_menu.html' %}</li>
-    <li class="active"><a href="{% url 'auth:edit' %}">редактировать</a></li>
-    <li class="active"><a href="{% url 'auth:logout' %}">logout</a></li>
+    <li class="active dropdown">{{user.username}}
+        <div class="dropdown-content">
+            {% if user.is_superuser %}
+                <a href="/admin">admin'ka</a>
+            {% endif %}
+            <a href="{% url 'orders:order_list' %}">заказы</a>
+            <a href="{% url 'auth:edit' %}">редактировать</a>
+            <a href="{% url 'auth:logout' %}">logout</a>
+
+        </div>
+    </li>
     {% else %}
     <li>корзина</li>
-    <li>редактировать</li>
     <li class="active"><a href="{% url 'auth:login' %}">login</a></li>
     {% endif %}
 </ul>
