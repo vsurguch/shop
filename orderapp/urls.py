@@ -10,5 +10,6 @@ urlpatterns = [
     path('update/<int:pk>', ordersappv.OrderItemsUpdate.as_view(), name='order_update'),
     path('delete/<int:pk>', ordersappv.OrderDelete.as_view(), name='order_delete'),
     path('details/<int:pk>', ordersappv.OrderDetailView.as_view(), name='order_detail'),
-    path('return_to_basket/<int:pk>', ordersappv.back_to_basket, name='back_to_basket')
+    path('return_to_basket/<int:pk>', ordersappv.back_to_basket, name='back_to_basket'),
+    path('item/<int:pk>/price', ordersappv.get_itemprice)
 ]

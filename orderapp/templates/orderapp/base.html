@@ -9,12 +9,16 @@
     <title>Masterpiece</title>
     {% endif %}
     <link rel="stylesheet" href="{% static 'css/styles_orders.css' %}">
+    {% block js %}
+        <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+        <script src="{% static 'js/orders_scripts.js' %}"></script>
+    {% endblock %}
 </head>
 <body>
 <div class="container">
 <div class="header">
     <div class="logo">
-    <h4>Masterpiece</h4>
+    <h4>Masterpiece{{app}}</h4>
     </div>
     <ul class="header_menu">
         <li class="header_menu_item"><a href="{% url 'main:index' %}">Основной сайт</a></li>

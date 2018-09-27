@@ -7,13 +7,17 @@
 <div class="content">
     <div class="captions">
     {% if object %}
-        {{object}}, {{object.created}}, {{object.get_status_display}}
+        {{object}}, {{object.created}}, {{object.get_status_display}},
+        total quantity: <span class="order_total_quantity"> {{object.get_total_quantity}}</span>
+        total cost:  <span class="order_total_cost"> {{object.get_total_cost}}</span>
     {% else %}
         Создание заказа
+        total quantity: <span class="order_total_quantity"> {{object.get_total_quantity}}</span>
+        total cost:  <span class="order_total_cost"> {{object.get_total_cost}}</span>
     {% endif %}
     </div>
 
-    <form action="" method="post">
+    <form class="order_form" action="" method="post">
         {% csrf_token %}
 
         {{ form.as_p }}

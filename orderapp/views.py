@@ -7,6 +7,7 @@ from django.db import transaction
 from django.forms import inlineformset_factory
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView
+from django.http import JsonResponse
 
 from django.dispatch import receiver
 from django.db.models.signals import pre_save, pre_delete
@@ -14,6 +15,7 @@ from django.db.models.signals import pre_save, pre_delete
 from basketapp.models import OrderedItem
 from orderapp.models import Order, OrderItem
 from orderapp.forms import OrderItemForm
+from mainapp.models import Item
 
 
 class OrderList(ListView):
@@ -22,6 +24,11 @@ class OrderList(ListView):
     def get_queryset(self):
         order = Order.objects.filter(user=self.request.user)
         return order
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        data = super(OrderList, self).get_context_data(**kwargs)
+        data['app'] = ':orders'
+        return data
 
 
 class OrderItemsCreate(CreateView):
@@ -48,6 +55,7 @@ class OrderItemsCreate(CreateView):
             else:
                 formset = OrderFormSet()
         data['orderitems'] = formset
+        data['app'] = ':orders'
         return data
 
     def form_valid(self, form):
@@ -86,7 +94,7 @@ class OrderItemsUpdate(UpdateView):
                     form.initial['price'] = form.instance.item.price
             data['orderitems'] = formset
 
-
+        data['app'] = ':orders'
         return data
 
     def form_valid(self, form):
@@ -120,7 +128,8 @@ class OrderDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(OrderDetailView, self).get_context_data(**kwargs)
-        print(self.get_object().orderitems.select_related())
+        # print(self.get_object().orderitems.select_related())
+        context['app'] = ':orders'
         return context
 
 
@@ -133,6 +142,15 @@ def back_to_basket(request, pk):
         basket_item.save()
     order.delete()
     return HttpResponseRedirect(reverse('basket:basket_index'))
+
+
+def get_itemprice(request, pk):
+    if request.is_ajax:
+        item = Item.objects.filter(pk=int(pk)).first()
+        if item:
+            return JsonResponse({'price': item.price})
+        else:
+            return JsonResponse({'price': 0})
 
 
 # @receiver(pre_save, sender=OrderItem)
