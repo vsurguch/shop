@@ -9,13 +9,13 @@
         {% endfor %}
     </select>
     <label for="select_category">Выбрать категорию</label>
-    <select name="categories" id="select_category">
+    <select name="categories" id="select_category" multiple>
         <option value="0">Все</option>
         {% for category in categories %}
         <option value="{{category.id}}">{{category.name}}</option>
         {% endfor %}
     </select>
-    <button type="button" onclick="loadDoc(this.form.authors.value, this.form.categories.value)">Применить</button>
+    <button type="button" onclick="loadDoc(this.form.authors.value, 'select_category')">Применить</button>
     </form>
     {% endautoescape %}
 </div>

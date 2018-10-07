@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, Http404
+from django.db.models import Q
 
 from .models import Category, Author, Item
 
@@ -44,11 +45,19 @@ def catalog_update(request):
     if request.method == 'GET' and len(request.GET) > 0:
         try:
             author_id = int(request.GET['authors'])
-            category_id = int(request.GET['categories'])
+            categories = request.GET['categories']
+            categories_id = list(map(lambda x: int(x), categories.split(',')))
+
             if author_id != 0:
                 items = items.filter(author__id=author_id)
-            if category_id != 0:
-                items = items.filter(category__id=category_id)
+
+            if categories_id[0] != 0:
+                filter_options = Q(category_id=categories_id[0])
+                if len(categories_id) > 1:
+                    for category_id in categories_id[1:]:
+                        filter_options = filter_options | Q(category_id=category_id)
+                items = items.filter(filter_options)
+
         except Exception as e:
             # print(e)
             raise Http404

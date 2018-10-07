@@ -29,7 +29,23 @@ window.onload = function(){
     } );
 }
 
+function getSelectValues(id){
+var el = document.getElementById(id);
+var result = [];
+var options = el.options;
+var opt;
+
+for (var i=0, iLen = options.length; i<iLen; i++ ){
+    opt = options[i];
+    if (opt.selected) {
+        result.push(opt.value || opt.text);
+    }
+}
+return result;
+}
+
 function loadDoc(authors, categories) {
+  cat = getSelectValues(categories);
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -37,7 +53,7 @@ function loadDoc(authors, categories) {
       this.responseText;
     }
   };
-  var params = "authors="+authors+"&categories="+categories;
+  var params = "authors="+authors+"&categories="+cat;
   var url = "/catalog_update/" + "?" + params;
   xhttp.open("GET", url, true);
   xhttp.send();

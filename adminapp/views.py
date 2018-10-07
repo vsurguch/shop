@@ -2,6 +2,11 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import user_passes_test
+
+from django.dispatch import receiver
+from django.db.models.signals import pre_save
+from django.db import connection
+
 from mainapp.models import Category, Author, Item
 from .forms import CategoryEditForm, AuthorEditForm, ItemEditForm
 
@@ -187,4 +192,24 @@ def delete_item(request):
             item = get_object_or_404(Item, id=request.POST['id'])
             item.delete()
     return HttpResponseRedirect(reverse('admin:items'))
+
+
+def db_profile_by_type(prefix, query_type, queries):
+    update_queries = list(filter(lambda x: query_type in x['sql'], queries))
+    print(f'db_profile {query_type} for {prefix}')
+    [print(query['sql']) for query in update_queries]
+
+@receiver(pre_save, sender=Category)
+def update_items_for_category(sender, instance, **kwargs):
+    print('updating ...')
+    if instance.pk:
+        # discount = instance.discount
+        # instance.item_set.update(discount=discount)
+
+        if instance.is_active:
+            instance.item_set.update(is_active=True)
+        else:
+            instance.item_set.update(is_active=False)
+    db_profile_by_type(sender, 'UPDATE', connection.queries)
+
 

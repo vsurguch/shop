@@ -1,0 +1,134 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.container {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.header {
+    width: 100%;
+    height: 100px;
+    background-color: gray;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header .logo {
+    font-size: 40px;
+    text-transform: uppercase;
+    font-weight: 700;
+    line-height: 40px;
+    padding: 30px;
+}
+
+.header_menu {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+    font-size: 20px;
+    padding: 30px;
+}
+
+.header_menu_item {
+    display: inline-block;
+    padding: 10px 20px;
+    font-variant: small-caps;
+}
+
+.header_menu_item a {
+    text-decoration: none;
+    color: white;
+}
+
+.content {
+    padding: 20px;
+}
+
+.user, .count {
+    padding: 20px 20px 0 20px;
+    font-size: 20px;
+    font-variant: small-caps;
+}
+
+.items_table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.items_table tr{
+    height: 60px;
+}
+
+.items_table td{
+    padding: 20px 20px;
+    border-top: 1px dashed gray;
+    border-bottom: 1px dashed gray;
+}
+
+.items_table th {
+    padding: 10px 20px;
+}
+
+.items_table th:first-child {
+    text-align: left;
+}
+
+.items_table td:first-child {
+    border-left: 1px dashed gray;
+}
+
+.items_table td:last-child {
+    border-right: 1px dashed gray;
+}
+
+.items_table img {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+}
+
+.items_table input[type="number"] {
+    height: 30px;
+    width: 40px;
+    padding: 5px;
+    border: 1px solid gray;
+    box-sizing:border-box;
+}
+
+.items_table .empty_row {
+    height: 20px;
+}
+
+.items_table .empty_row td {
+    border: none;
+}
+
+.items_table .col1 {
+    width: 150px;
+}
+
+.items_table .col3 {
+    width: 100px;
+}
+
+.items_table .space {
+    width: 300px;
+}
+
+button {
+    width: 120px;
+    height: 30px;
+    padding: 5px;
+    line-height: 20px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    background-color: gray;
+    color: white;
+    cursor: pointer;
+}

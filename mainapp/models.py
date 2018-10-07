@@ -5,6 +5,8 @@ class Category(models.Model):
 
     name = models.CharField(max_length=64, unique=True)
     desc = models.TextField(blank=True)
+    is_active = models.BooleanField(default=True)
+    discount = models.PositiveSmallIntegerField(default=0)
 
     def __str__(self):
         return f'{self.name}'
@@ -32,6 +34,8 @@ class Item(models.Model):
     height = models.SmallIntegerField(null=True)
     price = models.DecimalField(max_digits=7, decimal_places=0, default=0)
     quantity = models.PositiveIntegerField(default=0)
+    is_active = models.BooleanField(default=True)
+    discount = models.PositiveSmallIntegerField(default=0)
 
     def __str__(self):
         return f'{self.name} ({self.author})'

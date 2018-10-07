@@ -11,34 +11,46 @@ function updateBasketCount(){
   xhttp.send();
 }
 
+function updateItemsCount(){
+    var sum = 0;
+    $('.quantity').each(function(){
+        //sum += parseInt($(this).val());
+        sum += 1;
+    });
+    $('.count').text("В вашей корзине " + sum.toString() + " товаров.");
+};
+
 window.onload = function() {
-    $('.basket_list').on('input', 'input[type="number"]', function(event){
+    $('.items').on('input', 'input[type="number"]', function(event){
         var target_href = event.target;
           if (target_href){
             $.ajax({
                 url: "/basket/edit/" + target_href.name + "/" + target_href.value + "/",
                 success: function(data){
+                    $('.items').html(data.result);
                     updateBasketCount();
-                    $('.basket_list').html(data.result);
                 },
             });
         }
         event.preventDefault();
     });
 
-    $('.basket_list').on('click', 'button[type="button"]', function(event){
+    $('.items').on('click', 'button[type="button"]', function(event){
         var target_href = event.target;
         if (target_href){
             $.ajax({url: "/basket/remove/" + target_href.name + "/",
                 success: function(data){
                     updateBasketCount();
                     if (data.result=='Empty'){
-                        $('.caption').text("Empty");
+
+                        $('.count').text("В вашей корзине товаров не осталось:(");
+                        $('.items').html('<div class="empty_list"></div>');
 //                        $('.make_order').attribute("style={display: none;}");
 //                        $('.basket_list').attribute("style={display: none;}");
                     }
                     else {
-                        $('.basket_list').html(data.result);
+                        updateItemsCount();
+                        $('.items').html(data.result);
                     }
 
 

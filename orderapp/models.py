@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from django.utils.functional import cached_property
 from mainapp.models import Item
 
 # Create your models here.
@@ -35,16 +36,21 @@ class Order(models.Model):
     def __str__(self):
         return f'Заказ: {self.id}'
 
-    def get_total_quantity(self):
+    @cached_property
+    def get_items_cached(self):
         items = self.orderitems.select_related()
+        return items
+
+    def get_total_quantity(self):
+        items = self.get_items_cached
         return sum(list(map(lambda x: x.quantity, items)))
 
     def get_items_category_quantity(self):
-        items = self.orderitems.select_related()
+        items = self.get_items_cached
         return len(items)
 
     def get_total_cost(self):
-        items = self.orderitems.select_related()
+        items = self.get_items_cached
         return sum(list(map(lambda x: x.get_item_cost(), items)))
 
     def delete(self):

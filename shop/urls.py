@@ -27,15 +27,20 @@ urlpatterns = [
     path('catalog_update/', mainappv.catalog_update, name='catalog_update'),
     path('contacts/', mainappv.contacts, name='contacts'),
     path('item/<int:id>', mainappv.item_view, name="item_view"),
-    # path('admin/', include('adminapp.urls', namespace='admin')),
+    # path('admin/', admin.site.urls),
+    path('admin/', include('adminapp.urls', namespace='admin')),
     path('auth/', include('authapp.urls', namespace='auth')),
     path('basket/', include('basketapp.urls', namespace='basket')),
     path('order/', include('orderapp.urls', namespace='orders')),
     # url('^$', mainappv.index, name='main'),
     # path('', mainappv.index),
-    path('admin/', admin.site.urls),
+
     # url(r'^auth/', include('authapp.urls', namespace='auth')),
 ]
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+
+    # import debug_toolbar
+    #
+    # urlpatterns += [path('__debug__/', include(debug_toolbar.urls))]

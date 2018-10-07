@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.functional import cached_property
 from mainapp.models import Item
 from shop import settings
 
@@ -20,8 +21,13 @@ class OrderedItem(models.Model):
 
     objects = BasketQuerySet.as_manager()
 
-    def _get_total_quantity(self):
+    @cached_property
+    def get_items_cached(self):
         all_ordered = OrderedItem.objects.filter(user=self.user)
+        return all_ordered
+
+    def _get_total_quantity(self):
+        all_ordered = self.get_items_cached
         result = sum(map(lambda x: x.quantity, all_ordered))
         return result
 

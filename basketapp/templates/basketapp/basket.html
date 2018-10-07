@@ -2,22 +2,43 @@
 
 {% block content %}
 
-
+<div class="content">
 <div class="basket">
 
-    <h4>Пользователь: {% if user.is_authenticated %}
-    {{user.username}}
-    {% else %} незарегистрированный пользователь
-    {% endif %}
-    </h4>
+    <div class="user">
+        <span>Пользователь:
+        {% if user.is_authenticated %} {{user.username}}
+        {% else %} незарегистрированный пользователь
+        {% endif %}
+        </span>
+    </div>
+    <div class="count">
+        {% if all_ordered %}
+        <span>Сейчас в вашей корзине: {{all_ordered|length}}
+            {% if all_ordered|length == 1  %}
+                товар.
+            {% elif all_ordered|length|get_digit:"1" > 1 and all_ordered|length|get_digit:"1" < 5 %}
+                товара.
+            {% elif all_ordered|length|get_digit:"1" >= 5 %}
+                товаров.
+            {% endif %}
+        </span>
+        {% else %}
+        <span>У вас нет товаров в корзине</span>
+        {% endif %}
+    </div>
+    <div class="items">
+        {% if all_ordered %}
+        {% include "basketapp/inc_basket_list.html" %}
 
-    {% if all_ordered %}
-    <span class="caption">Сейчас в вашей корзине:</span>
-    {% include "basketapp/inc_basket_list.html" %}
-    <button class="make_order"><a href="{% url 'orderapp:order_create' %}">сделать заказ</a></button>
-    {% else %}
-    <span class="caption2">У вас нет товаров в корзине</span>
-    {% endif %}
+        {% endif %}
+
+    </div>
+
+
 
 </div>
+
+</div>
+
 {% endblock %}

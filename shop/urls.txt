@@ -1,0 +1,11 @@
+http://192.168.148.2/
+http://192.168.148.2/catalog
+http://192.168.148.2/contacts
+http://192.168.148.2/item/1
+http://192.168.148.2/item/2
+http://192.168.148.2/item/3
+http://192.168.148.2/admin
+http://192.168.148.2/basket
+http://192.168.148.2/order/
+http://192.168.148.2/order/details/36
+http://192.168.148.2/order/update/36

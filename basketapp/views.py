@@ -3,6 +3,7 @@ from django.http import HttpResponse, Http404
 from django.template.loader import render_to_string
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
+from django.db.models import F
 from .models import OrderedItem
 from mainapp.models import Item
 # Create your views here.
@@ -14,6 +15,7 @@ def basket(request):
     else:
         all_ordered = None
     context = {
+        'app': ':basket',
         'all_ordered': all_ordered
     }
     return render(request, 'basketapp/basket.html', context)
@@ -21,19 +23,17 @@ def basket(request):
 def basket_add(request, id):
     item = Item.objects.get(id=id)
     all_ordered = OrderedItem.objects.filter(user=request.user)
-    ordered = all_ordered.filter(item=item)
+    in_basket = OrderedItem.get_item(user=request.user, item=item)
 
-    if len(ordered) == 0:
-        ordered_item = OrderedItem(user=request.user, item=item, quantity=1)
-        ordered_item.save()
+    if not in_basket:
+        in_basket = OrderedItem(user=request.user, item=item, quantity=1)
+        in_basket.save()
     else:
-        ordered_item = ordered[0]
-        ordered_item.quantity += 1
-        ordered_item.save()
+        in_basket[0].quantity = F('quantity') + 1
 
     context = {
-        'body_class': 'basket',
-        'ordered_item': ordered_item,
+        'app': ':basket',
+        'ordered_item': in_basket,
         'all_ordered': all_ordered
     }
     return render(request, 'basketapp/basket.html', context)
